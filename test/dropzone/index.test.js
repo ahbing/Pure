@@ -23,13 +23,13 @@ describe('<Dropzone {...props}/> set props', () => {
   it('set dropzone theme', () => {
     const wrapper = shallow(<Dropzone />);
     wrapper.setProps({ theme: 'xiang' });
-    expect(wrapper.find('.xiang_Dropzone')).to.have.length(1);
-    expect(wrapper.find('.xiang_Dropzone-normal')).to.have.length(1);
+    expect(wrapper.find('.xiang__pure__dropzone')).to.have.length(1);
+    expect(wrapper.find('.xiang__pure__dropzone--normal')).to.have.length(1);
     wrapper.setProps({ className: 'lan' });
     expect(wrapper.find('.lan')).to.have.length(1);
-    expect(wrapper.find('.xiang_Dropzone')).to.have.length(1);
+    expect(wrapper.find('.xiang__pure__dropzone')).to.have.length(1);
     wrapper.setState({ sState: 'disabled' });
-    expect(wrapper.find('.xiang_Dropzone-normal')).to.have.length(0);
-    expect(wrapper.find('.xiang_Dropzone-disabled')).to.have.length(1);
+    expect(wrapper.find('.xiang__pure__dropzone--normal')).to.have.length(0);
+    expect(wrapper.find('.xiang__pure__dropzone--disabled')).to.have.length(1);
   });
 });

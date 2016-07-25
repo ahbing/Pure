@@ -43,8 +43,7 @@ class Dropzone extends React.Component {
       infoMsg: '',
     };
   }
-  onClick(e) {
-    e.preventDefault();
+  onClick() {
     if (!this.props.disabled) {
       this.open();
     }
@@ -126,19 +125,20 @@ class Dropzone extends React.Component {
     }
   }
   render() {
-    const componentName = 'Dropzone';
+    const componentCN = 'dropzone';
     const { className, theme, multiple } = this.props;
     const { sState } = this.state;
     const containerCN = classNames({
+      [`${theme}__pure__${componentCN}`]: true, // 控制内部元素的布局，尺寸等等
+      [`${theme}__pure__${componentCN}--${sState}`]: !!sState, // 控制内部元素的颜色，背景， 边框， 阴影等等
       [className]: !!className, // 外部用户提供的 className，其控制的样式应仅仅只是布局样式
-      [`${theme}_${componentName}`]: true, // 控制内部元素的布局，尺寸等等
-      [`${theme}_${componentName}-${sState}`]: !!sState, // 控制内部元素的颜色，背景， 边框， 阴影等等
     });
     const inputAttribute = {
       type: 'file',
       multiple,
       ref: el => this.fileInput = el, // eslint-disable-line
       onChange: this.onDrop,
+      onClick: (e) => e.stopPropagation()
     };
     // 根据不同的文件内容类型提供 <Tag/>
     // 内部状态改变提供 stateHook 样式状态
