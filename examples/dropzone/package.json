@@ -1,0 +1,20 @@
+{
+  "name": "dropzone",
+  "version": "1.0.0",
+  "description": "dropzone example",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && webpack --config webpack.config.js",
+    "clean": "rimraf ./dist",
+    "start": "node server.js"
+  },
+  "author": "ahbing",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^0.23.1",
+    "express": "^4.14.0",
+    "style-loader": "^0.13.1",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.12.1"
+  }
+}

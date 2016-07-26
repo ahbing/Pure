@@ -1,3 +1,3 @@
-import winodw from './winodw.js';
+import window from './window.js';
 
-export {winodw};
+export { window };

@@ -138,7 +138,7 @@ class Dropzone extends React.Component {
       multiple,
       ref: el => this.fileInput = el, // eslint-disable-line
       onChange: this.onDrop,
-      onClick: (e) => e.stopPropagation()
+      onClick: (e) => e.stopPropagation(),
     };
     // 根据不同的文件内容类型提供 <Tag/>
     // 内部状态改变提供 stateHook 样式状态

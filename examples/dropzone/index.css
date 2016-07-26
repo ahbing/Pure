@@ -1,0 +1,11 @@
+#root {
+  width: 100%;
+  height: 400px;
+  background: greenyellow;
+}
+.my-dropzone {
+  width: 200px;
+  height: 100px;
+  margin: 100px auto;
+  border: 1px solid #000;
+}

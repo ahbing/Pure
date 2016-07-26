@@ -1,17 +1,18 @@
-import React, { PropTypes } from 'react';
-import { Children } from 'react-dom';
-import { getParentNode, isInViewport } from '../utils/winodw.js'
+import React, { PropTypes, Children } from 'react';
+import { getParentNode, isInViewport } from '../utils/window';
 
 class LazyLoad extends React.Component {
-  static PropTypes = {
+  static propTypes = {
     className: PropTypes.string,
     onVisibale: PropTypes.func,
+    children: PropTypes.node,
   }
   constructor(props) {
     super(props);
+    this.lazyLoadHandler = this.lazyLoadHandler.bind(this);
     this.state = {
-      visiable: fasle
-    }
+      visiable: false,
+    };
   }
   componentDidMount() {
     const eventNode = this.getEventNode();
@@ -24,6 +25,14 @@ class LazyLoad extends React.Component {
   }
   componentWillUnmount() {
     this.detachEventListener();
+  }
+  getEventNode() {
+    return getParentNode(this.lazyLoadContainer);
+  }
+  detachEventListener() {
+    const eventNode = this.getEventNode();
+    window.removeEventListener('resize', this.lazyLoadHandler, false);
+    eventNode.removeEventListener('scroll', this.lazyLoadHandler, false);
   }
   lazyLoadHandler() {
     const node = this.lazyLoadContainer;
@@ -38,27 +47,18 @@ class LazyLoad extends React.Component {
       }
     }
   }
-  detachEventListener() {
-    const eventNode = this.getEventNode();
-    window.removeEventListener('resize', this.lazyLoadHandler, false);
-    eventNode.removeEventListener('scroll', this.lazyLoadHandler, false);
-  }
-  getEventNode() {
-    return getParentNode(this.lazyLoadContainer);
-  }
   render() {
-    const { children } = this.props;
+    const { children, className } = this.props;
     const { visiable } = this.state;
     const lazyLoadAttributes = {
-      ref: c => this.lazyLoadContainer = c,
+      className,
+      ref: el => this.lazyLoadContainer = el,// eslint-disable-line
     };
-    const childrenWithProp = React.cloneElement(child, {
-      visiable,
-    });
     return (
       <div {...lazyLoadAttributes}>
-        { visiable && Children.only(childrenWithProp) }
+        {visiable && Children.only(children)}
       </div>
-    )
+    );
   }
 }
+export default LazyLoad;

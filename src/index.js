@@ -1,3 +1,5 @@
-import Dropzone from '../src/dropzone/index';
+import Dropzone from './dropzone/index';
+import Video from './video/index';
+import LazyLoad from './lazyLoad/index';
 
-export { Dropzone };
+export { Dropzone, Video, LazyLoad };
