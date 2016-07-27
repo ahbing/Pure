@@ -52,7 +52,7 @@ class LazyLoad extends React.Component {
     const { visiable } = this.state;
     const lazyLoadAttributes = {
       className,
-      ref: el => this.lazyLoadContainer = el,// eslint-disable-line
+      ref: el => this.lazyLoadContainer = el, // eslint-disable-line
     };
     return (
       <div {...lazyLoadAttributes}>
