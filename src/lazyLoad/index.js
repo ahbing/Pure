@@ -1,15 +1,23 @@
 import React, { PropTypes, Children } from 'react';
 import { getParentNode, isInViewport } from '../utils/window';
+import throttle from 'lodash.throttle';
 
 class LazyLoad extends React.Component {
   static propTypes = {
     className: PropTypes.string,
     onVisibale: PropTypes.func,
+    throttle: PropTypes.number,
     children: PropTypes.node,
+  }
+  static defaultProps = {
+    throttle: 250, // 节流
   }
   constructor(props) {
     super(props);
     this.lazyLoadHandler = this.lazyLoadHandler.bind(this);
+    if (props.throttle > 0) {
+      this.lazyLoadHandler = throttle(this.lazyLoadHandler, props.throttle);
+    }
     this.state = {
       visiable: false,
     };

@@ -50,6 +50,7 @@
   "dependencies": {
     "attr-accept": "^1.0.3",
     "classnames": "^2.2.5",
+    "lodash.throttle": "^4.1.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "superagent": "^2.1.0"
