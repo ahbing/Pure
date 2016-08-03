@@ -1,9 +1,9 @@
 /* eslint prefer-template: 0 */
-
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 import accepts from 'attr-accept';
 import request from 'superagent';
+import { theme } from '../config';
 
 class Dropzone extends React.Component {
   static propTypes = {
@@ -22,7 +22,6 @@ class Dropzone extends React.Component {
     dropEffect: PropTypes.string,
   }
   static defaultProps = {
-    theme: 'lan',
     className: '',
     multiple: true,
     // preview: true,
@@ -30,6 +29,7 @@ class Dropzone extends React.Component {
     autoUpload: true,
     disabled: false,
     dropEffect: 'move',
+    theme,
   }
   constructor(props) {
     super(props);

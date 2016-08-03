@@ -1,6 +1,6 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
-
+import { theme } from '../config';
 import LazyLoad from '../lazyLoad';
 
 class Image extends React.Component {
@@ -17,9 +17,9 @@ class Image extends React.Component {
     alt: PropTypes.string,
   }
   static defaultProps = {
-    theme: 'lan',
     className: '',
     alt: '',
+    theme,
   }
   constructor(props) {
     super(props);

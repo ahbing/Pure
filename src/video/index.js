@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { theme } from '../config';
 import classNames from 'classnames';
 
 import LazyLoad from '../lazyLoad';
@@ -17,10 +18,10 @@ class Video extends React.Component {
     onVisibale: PropTypes.func,
   }
   static defaultProps = {
-    theme: 'lan',
     className: '',
     autoPlay: false,
     loop: false,
+    theme,
   }
   constructor(props) {
     super(props);
